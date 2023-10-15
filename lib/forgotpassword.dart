@@ -1,18 +1,15 @@
-import 'package:counterapp/forgotpassword.dart';
 import 'package:counterapp/home.dart';
-import 'package:counterapp/signup.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
-                  child: const Text('TutorialKart',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30))),
+                  child: const Text(
+                    'TutorialKart',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 30),
+                  )),
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
@@ -51,24 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: TextField(
-                  obscureText: true,
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
-                ),
-              ),
               TextButton(
                 onPressed: () {
                   //forgot password screen
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ForgotPassword()));
                 },
                 child: const Text(
                   'Forgot Password',
@@ -81,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text('Login'),
                     onPressed: () {
                       print(nameController.text);
-                      print(passwordController.text);
+
                       // navigate to home screen
                       Navigator.push(
                           context,
@@ -101,11 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     onPressed: () {
                       //signup screen
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpScreen()));
                     },
                   )
                 ],

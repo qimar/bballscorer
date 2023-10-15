@@ -1,0 +1,102 @@
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key, required this.title});
+  final String title;
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _counter = 0;
+  String _name = "Ramiq";
+  String _title = "Flutter Demo Home Page";
+
+  void _incrementCounter() {
+    setState(() {
+      _name = "Ramiq Waqas";
+      _counter++;
+
+      if (_counter == 10) {
+        _title = "Flutter 10";
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightGreen,
+        title:
+            Text('$_title}', style: Theme.of(context).textTheme.headlineMedium),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          tooltip: 'Navigation menu',
+          onPressed: () {
+            print('Menu button pressed');
+          },
+        ),
+        actions: <Widget>[
+          // video call icon
+          IconButton(
+            icon: const Icon(Icons.video_call),
+            tooltip: 'Video Call',
+            onPressed: () {
+              print('Video Call button pressed');
+            },
+          ),
+          // voice call icon
+          IconButton(
+            icon: const Icon(Icons.call),
+            tooltip: 'Voice Call',
+            onPressed: () {
+              print('Voice Call button pressed');
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Container(
+          // color: Colors.cyanAccent,
+          width: 400,
+          height: 400,
+          padding: const EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.yellowAccent,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.green,
+              width: 0.5,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              Text(
+                '${_name} ${_counter}',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
