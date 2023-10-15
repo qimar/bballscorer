@@ -31,13 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.lightGreen,
         title:
             Text('$_title}', style: Theme.of(context).textTheme.headlineMedium),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: () {
-            print('Menu button pressed');
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu),
+        //   tooltip: 'Navigation menu',
+        //   onPressed: () {
+        //     print('Menu button pressed');
+        //   },
+        // ),
         actions: <Widget>[
           // video call icon
           IconButton(
@@ -56,6 +56,39 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.lightGreen,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+              ),
+              title: const Text('Page 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.train,
+              ),
+              title: const Text('Log Out'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

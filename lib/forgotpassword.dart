@@ -1,4 +1,5 @@
 import 'package:counterapp/home.dart';
+import 'package:counterapp/signup.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -37,7 +38,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Sign in',
+                    'Email Address',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
@@ -46,23 +47,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   controller: nameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'User Name',
+                    labelText: 'Email Address',
                   ),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  //forgot password screen
-                },
-                child: const Text(
-                  'Forgot Password',
                 ),
               ),
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
-                    child: const Text('Login'),
+                    child: const Text('Submit'),
                     onPressed: () {
                       print(nameController.text);
 
@@ -85,6 +78,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                     onPressed: () {
                       //signup screen
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()));
                     },
                   )
                 ],
