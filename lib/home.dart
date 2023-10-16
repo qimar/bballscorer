@@ -28,7 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
         title:
             Text('$_title}', style: Theme.of(context).textTheme.headlineMedium),
         // leading: IconButton(
@@ -66,13 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 color: Colors.lightGreen,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Ramiq Waqas'),
             ),
             ListTile(
               leading: Icon(
                 Icons.home,
               ),
-              title: const Text('Page 1'),
+              title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
               },
