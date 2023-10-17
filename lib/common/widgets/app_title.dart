@@ -1,3 +1,4 @@
+import 'package:counterapp/login.dart';
 import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
@@ -30,20 +31,23 @@ class AppSubTitle extends StatelessWidget {
   }
 }
 
-class AppElevatedButton extends StatelessWidget {
-  const AppElevatedButton(
-      {super.key, required this.onPressedCallback, required this.title});
-  final Function onPressedCallback;
-  final String title;
+// class AppElevatedButton extends StatelessWidget {
+//   const AppElevatedButton(
+//       {super.key, required this.onTap, required this.title});
+//   final Function()? onTap;
+//   final String title;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 50,
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: ElevatedButton(
-          onPressed: onPressedCallback as void Function()?,
-          child: Text(title),
-        ));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         height: 50,
+//         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+//         child: ElevatedButton(
+//           onPressed: () {
+//             Navigator.push(context,
+//                 MaterialPageRoute(builder: (context) => const LoginScreen()));
+//           },
+//           child: Text(title),
+//         ));
+//   }
+// }
