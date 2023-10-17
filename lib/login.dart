@@ -1,3 +1,4 @@
+import 'package:counterapp/common/widgets/app_title.dart';
 import 'package:counterapp/forgotpassword.dart';
 import 'package:counterapp/home.dart';
 import 'package:counterapp/signup.dart';
@@ -26,14 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(10),
           child: ListView(
             children: <Widget>[
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text('TutorialKart',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30))),
+              const AppTitle(),
               Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),

@@ -1,3 +1,4 @@
+import 'package:counterapp/common/widgets/app_title.dart';
 import 'package:counterapp/forgotpassword.dart';
 import 'package:counterapp/home.dart';
 import 'package:counterapp/login.dart';
@@ -27,23 +28,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
           padding: const EdgeInsets.all(10),
           child: ListView(
             children: <Widget>[
+              const AppTitle(),
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  child: const Text('TutorialKart',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30))),
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
