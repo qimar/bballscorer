@@ -20,7 +20,9 @@ class LoginApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 68, 9, 9)),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const LoginScreen(
+        title: 'Login Page',
+      ),
     );
   }
 }

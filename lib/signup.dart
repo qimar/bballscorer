@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  HomeScreen(title: "Home Page")));
+                                  const LoginScreen(title: "Login Page")));
                     },
                   )),
               Row(
@@ -108,10 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {
                       //signup screen
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginScreen()));
+                      Navigator.pop(context);
                     },
                   )
                 ],

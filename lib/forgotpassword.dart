@@ -40,10 +40,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginScreen()));
+                      // todo: forgot password logic
+                      Navigator.pop(context);
                     },
                     child: Text("Submit"),
                   )),
@@ -56,6 +54,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         child: const Text('Sign Up',
                             style: TextStyle(fontSize: 20)),
                         onPressed: () {
+                          Navigator.pop(context);
                           //signup screen
                           Navigator.push(
                               context,

@@ -5,7 +5,7 @@ import 'package:counterapp/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, required String title});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -20,8 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        // title: Text('Login App',
-        // style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: Padding(
           padding: const EdgeInsets.all(10),
@@ -32,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Sign in',
+                    'Login',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
@@ -41,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: nameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'User Name',
+                    labelText: 'Username',
                   ),
                 ),
               ),
