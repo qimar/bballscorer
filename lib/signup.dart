@@ -1,8 +1,7 @@
 import 'package:counterapp/common/widgets/app_title.dart';
-import 'package:counterapp/forgotpassword.dart';
-import 'package:counterapp/home.dart';
+
 import 'package:counterapp/login.dart';
-import 'package:counterapp/signup.dart';
+
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -79,14 +78,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
                     child: const Text('Sign Up'),
                     onPressed: () {
+                      // ignore: avoid_print
                       print(nameController.text);
+                      // ignore: avoid_print
                       print(passwordController.text);
                       // navigate to home screen
                       Navigator.push(

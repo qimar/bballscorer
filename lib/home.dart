@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.video_call),
                   tooltip: 'Video Call',
                   onPressed: () {
+                    // ignore: avoid_print
                     print('Video Call button pressed');
                   }),
               // voice call icon
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.call),
                   tooltip: 'Voice Call',
                   onPressed: () {
+                    // ignore: avoid_print
                     print('Voice Call button pressed');
                   })
             ]),
@@ -58,13 +60,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(color: Colors.lightGreen),
                   child: Text('Ramiq Waqas')),
               ListTile(
-                  leading: Icon(Icons.home),
+                  leading: const Icon(Icons.home),
                   title: const Text('Settings'),
                   onTap: () {
                     Navigator.pop(context);
                   }),
               ListTile(
-                  leading: Icon(Icons.train),
+                  leading: const Icon(Icons.train),
                   title: const Text('Log Out'),
                   onTap: () {
                     Navigator.pop(context);
@@ -92,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       Text(
-                        '${_name} ${_counter}',
+                        '$_name $_counter',
                         style: Theme.of(context).textTheme.headlineMedium,
                       )
                     ]))),
@@ -113,13 +115,15 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('ListView Widget Example'),
         ),
-        body: MyListView(),
+        body: const MyListView(),
       ),
     );
   }
 }
 
 class MyListView extends StatelessWidget {
+  const MyListView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(

@@ -1,7 +1,5 @@
-import 'package:counterapp/common/functions/common_function.dart';
 import 'package:counterapp/common/widgets/app_title.dart';
-import 'package:counterapp/home.dart';
-import 'package:counterapp/login.dart';
+
 import 'package:counterapp/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       // todo: forgot password logic
                       Navigator.pop(context);
                     },
-                    child: Text("Submit"),
+                    child: const Text("Submit"),
                   )),
 
               Row(
@@ -59,7 +57,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUpScreen()));
+                                  builder: (context) => const SignUpScreen()));
                         })
                   ])
             ])));

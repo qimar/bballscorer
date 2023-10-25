@@ -1,4 +1,3 @@
-import 'package:counterapp/login.dart';
 import 'package:flutter/material.dart';
 
 class AppTitle extends StatelessWidget {
@@ -26,7 +25,7 @@ class AppSubTitle extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Text(
           title,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ));
   }
 }

@@ -72,14 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     child: const Text('Login'),
                     onPressed: () {
+                      // ignore: avoid_print
                       print(nameController.text);
+                      // ignore: avoid_print
                       print(passwordController.text);
                       // navigate to home screen
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  HomeScreen(title: "Home Page")));
+                                  const HomeScreen(title: "Home Page")));
                     },
                   )),
               Row(

@@ -1,4 +1,3 @@
-import 'package:counterapp/home.dart';
 import 'package:counterapp/login.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +15,8 @@ class LoginApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 68, 9, 9)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 68, 9, 9)),
         useMaterial3: true,
       ),
       home: const LoginScreen(
