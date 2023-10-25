@@ -1,34 +1,23 @@
 import 'package:counterapp/models/drill.dart';
 
-/**
- * {
-                "id": 2,
-                "thumbnail": "jj",
-                "title": "Free Throw Shooting",
-                "video_url": "jj",
-                "description": "Practising Free throw shots from Foul Line. "
-              },
- */
-// create json to dart of activity
-// https://javiercbk.github.io/json_to_dart/
 class Activity {
-  int id;
-  String thumbnail;
-  String title;
-  String videoUrl;
-  String description;
-  // reference of drill
-  Drill drill;
+  int? id;
+  String? thumbnail;
+  String? title;
+  String? videoUrl;
+  String? description;
+  // object of drill
+  Drill? drill;
 
   // constructor is firt method of class which is called when object is created
   Activity(
-      {required this.id,
-      required this.thumbnail,
-      required this.title,
-      required this.videoUrl,
-      required this.description,
+      {this.id,
+      this.thumbnail,
+      this.title,
+      this.videoUrl,
+      this.description,
       // reference of drill
-      required this.drill});
+      this.drill});
 
   // factory is a method which is used to return object from json to dart model
   factory Activity.fromJson(Map<String, dynamic> json) => Activity(
@@ -47,6 +36,6 @@ class Activity {
         "title": title,
         "video_url": videoUrl,
         "description": description,
-        "drill": drill.toJson()
+        "drill": drill?.toJson()
       };
 }

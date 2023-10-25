@@ -6,10 +6,10 @@ class Drill {
   int? id;
   String? name;
   int? duration;
-  // reference of category
+  // object of category
   Category? category;
   // list of activities
-  List<Activity?> activities;
+  List<Activity>? activities;
 
   // constructor is firt method of class which is called when object is created
   Drill(
@@ -36,6 +36,6 @@ class Drill {
         "title": name,
         "duration": duration,
         "category": category?.toJson(),
-        "activities": List<dynamic>.from(activities.map((x) => x?.toJson())),
+        "activities": List<dynamic>.from(activities!.map((x) => x.toJson())),
       };
 }

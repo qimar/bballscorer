@@ -16,33 +16,33 @@
 import 'package:counterapp/models/drill.dart';
 
 class Category {
-  int id;
-  String name;
-  bool isPublishedOnline;
-  String difficulty;
-  String duration;
-  double price;
-  int programTypeId;
+  int? id;
+  String? title;
+  bool? isPublished;
+  String? difficulty;
+  String? duration;
+  double? price;
+  int? programTypeId;
   // list of drills
-  List<Drill> drills;
+  List<Drill>? drills;
 
   // constructor is firt method of class which is called when object is created
   Category(
-      {required this.id,
-      required this.name,
-      required this.isPublishedOnline,
-      required this.difficulty,
-      required this.duration,
-      required this.price,
-      required this.programTypeId,
+      {this.id,
+      this.title,
+      this.isPublished,
+      this.difficulty,
+      this.duration,
+      this.price,
+      this.programTypeId,
       // list of drills
-      required this.drills});
+      this.drills});
 
   // factory is a method which is used to return object from json to dart model
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
-        name: json["title"],
-        isPublishedOnline: json["ispublished"],
+        title: json["title"],
+        isPublished: json["ispublished"],
         difficulty: json["difficulty"],
         duration: json["duration"],
         price: json["price"],
@@ -54,13 +54,13 @@ class Category {
   // toJson is a method which is used to return json from dart model
   Map<String, dynamic> toJson() => {
         "id": id,
-        "title": name,
-        "ispublished": isPublishedOnline,
+        "title": title,
+        "ispublished": isPublished,
         "difficulty": difficulty,
         "duration": duration,
         "price": price,
         "program_type_id": programTypeId,
         // list of drills
-        "drills": List<dynamic>.from(drills.map((x) => x.toJson())),
+        "drills": List<dynamic>.from(drills!.map((x) => x.toJson())),
       };
 }
