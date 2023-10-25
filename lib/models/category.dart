@@ -14,6 +14,7 @@
 // https://javiercbk.github.io/json_to_dart/
 //
 import 'package:counterapp/models/drill.dart';
+import 'package:counterapp/models/program_type.dart';
 
 class Category {
   int? id;
@@ -25,6 +26,8 @@ class Category {
   int? programTypeId;
   // list of drills
   List<Drill>? drills;
+  // reference of program type
+  ProgramType? programType;
 
   // constructor is firt method of class which is called when object is created
   Category(
@@ -36,7 +39,9 @@ class Category {
       this.price,
       this.programTypeId,
       // list of drills
-      this.drills});
+      this.drills,
+      // reference of program type
+      this.programType});
 
   // factory is a method which is used to return object from json to dart model
   factory Category.fromJson(Map<String, dynamic> json) => Category(
@@ -49,6 +54,8 @@ class Category {
         programTypeId: json["program_type_id"],
         // list of drills
         drills: List<Drill>.from(json["drills"].map((x) => Drill.fromJson(x))),
+        // reference of program type
+        programType: ProgramType.fromJson(json["program_type"]),
       );
 
   // toJson is a method which is used to return json from dart model
@@ -62,5 +69,7 @@ class Category {
         "program_type_id": programTypeId,
         // list of drills
         "drills": List<dynamic>.from(drills!.map((x) => x.toJson())),
+        // reference of program type
+        "program_type": programType?.toJson(),
       };
 }
