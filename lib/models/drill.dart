@@ -1,8 +1,10 @@
 import 'package:counterapp/models/activity.dart';
 import 'package:counterapp/models/category.dart';
 import 'package:counterapp/models/program_type.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 // make json to dart of drill
+@JsonSerializable()
 class Drill {
   int? id;
   String? name;

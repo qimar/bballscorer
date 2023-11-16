@@ -1,6 +1,8 @@
 import 'package:counterapp/models/drill.dart';
 import 'package:counterapp/models/program_type.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+@JsonSerializable()
 class Activity {
   int? id;
   String? thumbnail;

@@ -1,0 +1,4 @@
+enum PaymentOptionType {
+  StripePayment,
+  PayBrightPayment,
+}
