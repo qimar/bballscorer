@@ -1,4 +1,3 @@
-/// https://github.com/nhost/nhost-dart/#running-the-example-server
 const nhost_subdomain = 'yfnaaqdhstomxncwctej';
 const nhost_region = 'ap-south-1';
 const nhost_graphql_url =
@@ -26,18 +25,5 @@ yfnaaqdhstomxncwctej
 NHOST_REGION
 ap-south-1
 
-NHOST_HASURA_URL
 
-
-NHOST_AUTH_URL
-https://yfnaaqdhstomxncwctej.auth.ap-south-1.nhost.run/v1
-
-NHOST_GRAPHQL_URL
-https://yfnaaqdhstomxncwctej.graphql.ap-south-1.nhost.run/v1
-
-NHOST_STORAGE_URL
-https://yfnaaqdhstomxncwctej.storage.ap-south-1.nhost.run/v1
-
-NHOST_FUNCTIONS_URL
-https://yfnaaqdhstomxncwctej.functions.ap-south-1.nhost.run/v1
  */
