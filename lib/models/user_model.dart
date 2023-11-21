@@ -10,14 +10,14 @@ class UserModel {
   DateTime? createdAt;
   DateTime? updatedAt;
   DateTime? lastSeen;
-  Bool? disabled;
+  bool? disabled;
   String? displayName;
   String? avatarUrl;
   String? locale;
   String? email;
   Int? phoneNumber;
-  Bool? emailVerified;
-  Bool? phoneNumberVerified;
+  bool? emailVerified;
+  bool? phoneNumberVerified;
   String? defaultRole;
   bool? isAnonymous;
   String? roles;
@@ -44,18 +44,27 @@ class UserModel {
     this.accessToken,
   });
 
-factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    id: json["id"],
-    displayName: json["display_name"],
-    locale: json["locale"],
-    createdAt: DateTime.parse(json["createdAt"]),
-    isAnonymous: json["isAnonymous"],
-    defaultRole: json["defaultRole"],
-    roles: json["roles"],
-    metadata: json["metadata"],
-    email: json["email"],
-    avatarUrl: json["avatarUrl"],
-    accessToken: json["accessToken"],
-  );
-
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"] as String?,
+        displayName: json["display_name"] as String?,
+        locale: json["locale"] as String?,
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"] as String),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"] as String),
+        lastSeen: json["last_seen"] == null
+            ? null
+            : DateTime.parse(json["last_seen"] as String),
+        disabled: json["disabled"] as bool?,
+        emailVerified: json["email_verified "] as bool?,
+        isAnonymous: json["is_anonymous "] as bool?,
+        defaultRole: json["default_role "] as String?,
+        roles: json["roles"] as String?,
+        metadata: json["metadata"] as String?,
+        email: json["email"] as String?,
+        avatarUrl: json["avatarUrl"] as String?,
+        phoneNumberVerified: json["phone_number_verified"] as bool?,
+      );
 }
