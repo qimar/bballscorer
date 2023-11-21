@@ -1,4 +1,4 @@
-# counterapp
+# SportRabbit
 
 A new Flutter project.
 
