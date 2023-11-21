@@ -1,4 +1,4 @@
-String getAllDrillsByGame =
+String getAllDrillsByParamsQuery =
     '''query getAllDrillsByGame(\$whereDrillFilter: drill_bool_exp!) {
   drill_aggregate(where: \$whereDrillFilter) {
     aggregate {

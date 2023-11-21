@@ -1,4 +1,5 @@
-String getAllGames = '''query getAllGames(\$whereGameFilter: game_bool_exp!) {
+String getAllGamesByParamsQuery =
+    '''query getAllGames(\$whereGameFilter: game_bool_exp!) {
   game_aggregate(where: \$whereGameFilter){
     aggregate{
       count
