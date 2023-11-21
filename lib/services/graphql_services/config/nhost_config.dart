@@ -1,29 +1,14 @@
-const nhost_subdomain = 'yfnaaqdhstomxncwctej';
-const nhost_region = 'ap-south-1';
-const nhost_graphql_url =
-    'https://yfnaaqdhstomxncwctej.graphql.ap-south-1.nhost.run/v1';
-const nhost_hasura_url =
-    'https://yfnaaqdhstomxncwctej.hasura.ap-south-1.nhost.run/console';
-const nhost_storage_url =
+const NHOST_SUBDOMAIN = 'lsfvwunypqneqnvrjrsu';
+
+const NHOST_REGION = 'ap-southeast-1';
+
+const NHOST_GRAPHQL_URL =
+    'https://lsfvwunypqneqnvrjrsu.graphql.ap-southeast-1.nhost.run/v1/graphql';
+
+const NHOST_STORAGE_URL =
     'https://yfnaaqdhstomxncwctej.storage.ap-south-1.nhost.run/v1';
-const nhost_functions_url =
+
+const NHOST_FUNCTIONS_URL =
     'https://yfnaaqdhstomxncwctej.functions.ap-south-1.nhost.run/v1';
-const YT_SCRAPPER_URL =
-    "https://incomparable-faun-a2e4c9.netlify.app/.netlify/functions/yt";
-const YT_APP_PACKAGE_ID = 1;
 
-/*
-NHOST_ADMIN_SECRET
-o_A^0hsy0w!yv+Wb_q_ggrz__I8dWs5i
-
-NHOST_WEBHOOK_SECRET
-H1+!OZAfeb_4FHAQRZ67aXqKtVwV=sSA
-
-NHOST_SUBDOMAIN
-yfnaaqdhstomxncwctej
-
-NHOST_REGION
-ap-south-1
-
-
- */
+const NHOST_GRAPHQL_SECRET = 'o-WxL#B!cz=jt;;ccw5:OhPI_xp8hR!W';
