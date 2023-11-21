@@ -1,6 +1,6 @@
-import 'package:counterapp/common/widgets/app_title.dart';
+import 'package:SportRabbit/common/widgets/app_title.dart';
 
-import 'package:counterapp/login.dart';
+import 'package:SportRabbit/screens/login.dart';
 
 import 'package:flutter/material.dart';
 

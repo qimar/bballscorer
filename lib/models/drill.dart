@@ -1,6 +1,6 @@
-import 'package:counterapp/models/activity.dart';
-import 'package:counterapp/models/category.dart';
-import 'package:counterapp/models/program_type.dart';
+import 'package:SportRabbit/models/activity.dart';
+import 'package:SportRabbit/models/category.dart';
+import 'package:SportRabbit/models/program_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 // make json to dart of drill

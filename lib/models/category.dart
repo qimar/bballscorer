@@ -13,8 +13,8 @@
 // make json to dart of category
 // https://javiercbk.github.io/json_to_dart/
 //
-import 'package:counterapp/models/drill.dart';
-import 'package:counterapp/models/program_type.dart';
+import 'package:SportRabbit/models/drill.dart';
+import 'package:SportRabbit/models/program_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()

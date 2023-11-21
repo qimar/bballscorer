@@ -1,7 +1,7 @@
-import 'package:counterapp/common/widgets/app_title.dart';
-import 'package:counterapp/forgotpassword.dart';
-import 'package:counterapp/home.dart';
-import 'package:counterapp/signup.dart';
+import 'package:SportRabbit/common/widgets/app_title.dart';
+import 'package:SportRabbit/screens/forgotpassword.dart';
+import 'package:SportRabbit/screens/home.dart';
+import 'package:SportRabbit/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
