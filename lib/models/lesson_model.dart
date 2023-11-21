@@ -1,21 +1,21 @@
-import 'package:SportRabbit/models/drill.dart';
+import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/program_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
-class Activity {
+class LessonModel {
   int? id;
   String? thumbnail;
   String? title;
   String? videoUrl;
   String? description;
   // object of drill
-  Drill? drill;
+  DrillModel? drill;
   // reference of program type
   ProgramType? programType;
 
   // constructor is firt method of class which is called when object is created
-  Activity(
+  LessonModel(
       {this.id,
       this.thumbnail,
       this.title,
@@ -27,13 +27,13 @@ class Activity {
       this.programType});
 
   // factory is a method which is used to return object from json to dart model
-  factory Activity.fromJson(Map<String, dynamic> json) => Activity(
+  factory LessonModel.fromJson(Map<String, dynamic> json) => LessonModel(
         id: json["id"],
         thumbnail: json["thumbnail"],
         title: json["title"],
         videoUrl: json["video_url"],
         description: json["description"],
-        drill: Drill.fromJson(json["drill"]),
+        drill: DrillModel.fromJson(json["drill"]),
         programType: ProgramType.fromJson(json["program_type"]),
       );
 

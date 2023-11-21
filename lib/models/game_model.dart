@@ -13,12 +13,12 @@
 // make json to dart of category
 // https://javiercbk.github.io/json_to_dart/
 //
-import 'package:SportRabbit/models/drill.dart';
+import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/program_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
-class Category {
+class GameModel {
   int? id;
   String? title;
   bool? isPublished;
@@ -27,12 +27,12 @@ class Category {
   double? price;
   int? programTypeId;
   // list of drills
-  List<Drill>? drills;
+  List<DrillModel>? drills;
   // reference of program type
   ProgramType? programType;
 
   // constructor is firt method of class which is called when object is created
-  Category(
+  GameModel(
       {this.id,
       this.title,
       this.isPublished,
@@ -46,7 +46,7 @@ class Category {
       this.programType});
 
   // factory is a method which is used to return object from json to dart model
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
+  factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
         id: json["id"],
         title: json["title"],
         isPublished: json["ispublished"],
@@ -55,7 +55,8 @@ class Category {
         price: json["price"],
         programTypeId: json["program_type_id"],
         // list of drills
-        drills: List<Drill>.from(json["drills"].map((x) => Drill.fromJson(x))),
+        drills: List<DrillModel>.from(
+            json["drills"].map((x) => DrillModel.fromJson(x))),
         // reference of program type
         programType: ProgramType.fromJson(json["program_type"]),
       );

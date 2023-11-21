@@ -12,16 +12,22 @@ dependencies:
     sdk: flutter
   json_annotation: ^4.8.1
   nhost_flutter_auth: ^3.0.1
+  provider: ^6.0.5
   shared_preferences: ^2.2.0
   webview_flutter: ^4.4.2
+  graphql_flutter: ^5.1.2
   youtube_player_flutter: ^8.1.0
+  video_player: ^2.1.8
+  chewie: ^1.7.1
+
+
 
 dev_dependencies:
-  json_serializable: ^6.7.1
   build_runner: ^2.4.6
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.7.1
 
 # flutter: null
 #  assets:
