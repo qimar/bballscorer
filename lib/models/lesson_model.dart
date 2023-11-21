@@ -5,10 +5,15 @@ import 'package:json_annotation/json_annotation.dart';
 @JsonSerializable()
 class LessonModel {
   int? id;
-  String? thumbnail;
+  int? drillId;
   String? title;
-  String? videoUrl;
   String? description;
+  String? thumbnail;
+  String? videoUrl;
+  int? programTypeId;
+  bool? isPublished;
+  String? difficulty;
+  int? duration;
   // object of drill
   DrillModel? drill;
   // reference of program type
@@ -17,10 +22,15 @@ class LessonModel {
   // constructor is firt method of class which is called when object is created
   LessonModel(
       {this.id,
-      this.thumbnail,
+      this.drillId,
       this.title,
-      this.videoUrl,
       this.description,
+      this.thumbnail,
+      this.videoUrl,
+      this.programTypeId,
+      this.isPublished,
+      this.difficulty,
+      this.duration,
       // reference of drill
       this.drill,
       // reference of program type
