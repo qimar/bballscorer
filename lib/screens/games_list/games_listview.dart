@@ -1,29 +1,15 @@
+import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title});
-  final String title;
+class GamesListView extends StatefulWidget {
+  const GamesListView({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GamesListView> createState() => _GamesListViewState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int _counter = 0;
-  String _name = "Ramiq";
-  String _title = "Flutter Demo Home Page";
-
-  void _incrementCounter() {
-    setState(() {
-      _name = "Ramiq Waqas";
-      _counter++;
-
-      if (_counter == 10) {
-        _title = "Flutter 10";
-      }
-    });
-  }
-
+class _GamesListViewState extends State<GamesListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,77 +17,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // backgroundColor: Colors.transparent,
             elevation: 0.0,
-            title: Text('$_title}',
+            title: Text('Games List',
                 style: Theme.of(context).textTheme.headlineMedium),
             actions: <Widget>[
-              // video call icon
+              // notification icon
               IconButton(
-                  icon: const Icon(Icons.video_call),
-                  tooltip: 'Video Call',
+                  icon: const Icon(Icons.notifications),
                   onPressed: () {
-                    // ignore: avoid_print
-                    print('Video Call button pressed');
+                    // do something
                   }),
-              // voice call icon
-              IconButton(
-                  icon: const Icon(Icons.call),
-                  tooltip: 'Voice Call',
-                  onPressed: () {
-                    // ignore: avoid_print
-                    print('Voice Call button pressed');
-                  })
             ]),
-        drawer: Drawer(
-            child: ListView(
-                // Important: Remove any padding from the ListView.
-                padding: EdgeInsets.zero,
-                children: [
-              const DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.lightGreen),
-                  child: Text('Ramiq Waqas')),
-              ListTile(
-                  leading: const Icon(Icons.home),
-                  title: const Text('Settings'),
-                  onTap: () {
-                    Navigator.pop(context);
-                  }),
-              ListTile(
-                  leading: const Icon(Icons.train),
-                  title: const Text('Log Out'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  })
-            ])),
-        body: Center(
-            // Center is a layout widget. It takes a single child and positions it
-            // in the middle of the parent.
-            child: Container(
-                width: 400,
-                height: 400,
-                padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: Colors.yellowAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.green, width: 0.5)),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text('You have pushed the button this many times:'),
-                      Text(
-                        '$_counter',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      Text(
-                        '$_name $_counter',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      )
-                    ]))),
-        floatingActionButton: FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add)));
+        body: Consumer<GamesProvider>(builder: (context, gamesProvider, child) {
+          return ListView.builder(
+              itemCount: gamesProvider.gamesCount,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    title: Text(gamesProvider.games[index].title!),
+                    subtitle: Text(gamesProvider.games[index].difficulty!));
+              });
+        }));
   }
 }
 

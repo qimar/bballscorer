@@ -5,7 +5,7 @@ import 'package:SportRabbit/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key, required String title});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -80,8 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const HomeScreen(title: "Home Page")));
+                              builder: (context) => const GamesListView()));
                     },
                   )),
               Row(
