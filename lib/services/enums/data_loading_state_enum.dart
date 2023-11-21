@@ -1,4 +1,4 @@
-enum LoadingDataState {
+enum DataState {
   Uninitialized,
   Refreshing,
   Initial_Fetching,

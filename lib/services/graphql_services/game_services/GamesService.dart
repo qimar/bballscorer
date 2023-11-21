@@ -10,7 +10,7 @@ class GameGQLService {
 
   // fetch list of games from graphql
   Future<GamePaginatedResponse> getAllGamesByParams(
-      Map<String, dynamic> variables) async {
+      {required Map<String, dynamic> variables}) async {
     final QueryOptions options = QueryOptions(
       document: gql(getAllGamesByParamsQuery),
       variables: variables,
