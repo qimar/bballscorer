@@ -46,15 +46,4 @@ class LessonModel {
         drill: DrillModel.fromJson(json["drill"]),
         programType: ProgramType.fromJson(json["program_type"]),
       );
-
-  // toJson is a method which is used to return json from dart model
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "thumbnail": thumbnail,
-        "title": title,
-        "video_url": videoUrl,
-        "description": description,
-        "drill": drill?.toJson(),
-        "program_type": programType?.toJson(),
-      };
 }

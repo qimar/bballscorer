@@ -7,44 +7,45 @@ import 'package:json_annotation/json_annotation.dart';
 @JsonSerializable()
 class DrillModel {
   int? id;
-  String? name;
+  String? title;
   int? duration;
   // object of category
-  GameModel? category;
+  GameModel? game;
+  int? gameId;
+  String? thumbnail;
+  bool? isPublished;
+  String? difficulty;
   // list of activities
-  List<LessonModel>? activities;
+  List<LessonModel>? lessons;
   // reference of program type
   ProgramType? programType;
 
   // constructor is firt method of class which is called when object is created
   DrillModel(
       {this.id,
-      this.name,
+      this.title,
       this.duration,
-      // reference of category
-      this.category,
+      // reference of game
+      this.game,
+      this.gameId,
+      this.thumbnail,
+      this.isPublished,
+      this.difficulty,
       // list of activities
-      this.activities = const [],
+      this.lessons = const [],
       // reference of program type
       this.programType});
 
   // factory is a method which is used to return object from json to dart model
   factory DrillModel.fromJson(Map<String, dynamic> json) => DrillModel(
-      id: json["id"],
-      name: json["title"],
-      duration: json["duration"],
-      category: GameModel.fromJson(json["category"]),
-      activities: List<LessonModel>.from(
-          json["activities"].map((x) => LessonModel.fromJson(x))),
-      programType: ProgramType.fromJson(json["program_type"]));
-
-  // toJson is a method which is used to return json from dart model
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": name,
-        "duration": duration,
-        "category": category?.toJson(),
-        "activities": List<dynamic>.from(activities!.map((x) => x.toJson())),
-        "program_type": programType?.toJson(),
-      };
+      id: json["id"] as int?,
+      title: json["title"] as String?,
+      duration: json["duration"] as int?,
+      game: json["game"] == null ? null : GameModel.fromJson(json["game"]),
+      lessons: (json["lessons"] as List<dynamic>)
+          .map((e) => LessonModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      programType: json["program_type"] == null
+          ? null
+          : ProgramType.fromJson(json["program_type"]));
 }

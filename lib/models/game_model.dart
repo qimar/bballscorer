@@ -21,6 +21,7 @@ import 'package:json_annotation/json_annotation.dart';
 class GameModel {
   int? id;
   String? title;
+  String? thumbnail;
   bool? isPublished;
   String? difficulty;
   String? duration;
@@ -35,6 +36,7 @@ class GameModel {
   GameModel(
       {this.id,
       this.title,
+      this.thumbnail,
       this.isPublished,
       this.difficulty,
       this.duration,
@@ -47,32 +49,19 @@ class GameModel {
 
   // factory is a method which is used to return object from json to dart model
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
-        id: json["id"],
-        title: json["title"],
-        isPublished: json["ispublished"],
-        difficulty: json["difficulty"],
-        duration: json["duration"],
-        price: json["price"],
-        programTypeId: json["program_type_id"],
+        id: json["id"] as int?,
+        title: json["title"] as String?,
+        isPublished: json["ispublished"] as bool?,
+        difficulty: json["difficulty"] as String?,
+        duration: json["duration"] as String?,
+        price: json["price"] as double?,
+        programTypeId: json["program_type_id"] as int?,
         // list of drills
         drills: List<DrillModel>.from(
             json["drills"].map((x) => DrillModel.fromJson(x))),
         // reference of program type
-        programType: ProgramType.fromJson(json["program_type"]),
+        programType: json["program_type"] == null
+            ? null
+            : ProgramType.fromJson(json["program_type"]),
       );
-
-  // toJson is a method which is used to return json from dart model
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "ispublished": isPublished,
-        "difficulty": difficulty,
-        "duration": duration,
-        "price": price,
-        "program_type_id": programTypeId,
-        // list of drills
-        "drills": List<dynamic>.from(drills!.map((x) => x.toJson())),
-        // reference of program type
-        "program_type": programType?.toJson(),
-      };
 }
