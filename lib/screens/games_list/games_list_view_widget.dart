@@ -1,3 +1,4 @@
+import 'package:SportRabbit/common/widgets/search_field_mock.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/screens/games_list/game_list_item_widet.dart';
@@ -39,7 +40,16 @@ class GamesListViewWidget extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: _data.length,
                       itemBuilder: (context, index) {
-                        return GameListItemWidet(game: _data[index]);
+                        // show seach field on 0 index
+                        if (index == 0) {
+                          return SearchFieldModel(
+                              searchHintText: "Search for games...",
+                              onSearchTap: () {
+                                print("search tap on games search");
+                              });
+                        } else {
+                          return GameListItemWidet(game: _data[index]);
+                        }
                       })))),
       if (_dataState == DataState.More_Fetching)
         const Center(child: CircularProgressIndicator())

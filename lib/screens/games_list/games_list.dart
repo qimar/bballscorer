@@ -10,6 +10,7 @@ class GamesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.pink[50],
             elevation: 0.0,
             title:
                 Text('Games', style: Theme.of(context).textTheme.headlineSmall),

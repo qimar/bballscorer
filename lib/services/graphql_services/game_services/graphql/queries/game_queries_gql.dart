@@ -1,11 +1,11 @@
 String getAllGamesByParamsQuery =
-    '''query getAllGames(\$whereGameFilter: game_bool_exp!) {
+    '''query getAllGames(\$whereGameFilter: game_bool_exp!, \$limit: Int!, \$offset: Int!) {
   game_aggregate(where: \$whereGameFilter){
     aggregate{
       count
     }
   }
-  game(where: \$whereGameFilter) {
+  game(where: \$whereGameFilter limit: \$limit offset: \$offset) {
     id
     title
     thumbnail

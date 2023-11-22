@@ -20,6 +20,7 @@ class GamesRabbitApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => GamesProvider()),
       ],
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           restorationScopeId: 'com.GamesRabbit.app',
           title: 'GamesRabbit',
           theme: ThemeData(
