@@ -53,10 +53,19 @@ class GamesListViewWidget extends StatelessWidget {
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)
-        const Center(child: CircularProgressIndicator()),
+        Center(
+            child: SizedBox(
+          height: 15,
+          width: 15,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(
+                strokeWidth: 0.6, color: Theme.of(context).primaryColor),
+          ),
+        )),
       if (_dataState == DataState.No_More_Data)
         Center(
-            child: Text("No more data",
+            child: Text("No more games",
                 style: Theme.of(context).textTheme.bodySmall))
     ]);
   }

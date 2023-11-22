@@ -20,7 +20,7 @@ class GameTitleWidget extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(game.difficultyAndDuration),
-            Text("${game.title!} - ${index + 1}",
+            Text("${game.title!} - ${index}",
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
