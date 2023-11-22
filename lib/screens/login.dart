@@ -1,6 +1,6 @@
 import 'package:SportRabbit/common/widgets/app_title.dart';
 import 'package:SportRabbit/screens/forgotpassword.dart';
-import 'package:SportRabbit/screens/games_list/games_listview.dart';
+import 'package:SportRabbit/screens/games_list/games_list.dart';
 import 'package:SportRabbit/screens/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const GamesListView()));
+                              builder: (context) => GamesListView()));
                     },
                   )),
               Row(

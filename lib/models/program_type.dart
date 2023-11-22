@@ -24,16 +24,22 @@ class ProgramType {
   });
 
   factory ProgramType.fromJson(Map<String, dynamic> json) => ProgramType(
-        id: json["id"],
-        value: json["value"],
-        price: json["price"],
-        title: json["title"],
-        activities: List<LessonModel>.from(
-            json["activities"].map((x) => LessonModel.fromJson(x))),
-        categories: List<GameModel>.from(
-            json["categories"].map((x) => GameModel.fromJson(x))),
-        drills: List<DrillModel>.from(
-            json["drills"].map((x) => DrillModel.fromJson(x))),
+        id: json["id"] as int?,
+        value: json["value"] as bool?,
+        price: json["price"] as double?,
+        title: json["title"] as String?,
+        activities: json["activities"] == null
+            ? null
+            : List<LessonModel>.from(
+                json["activities"].map((x) => LessonModel.fromJson(x))),
+        categories: json["categories"] == null
+            ? null
+            : List<GameModel>.from(
+                json["categories"].map((x) => GameModel.fromJson(x))),
+        drills: json["drills"] == null
+            ? null
+            : List<DrillModel>.from(
+                json["drills"].map((x) => DrillModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

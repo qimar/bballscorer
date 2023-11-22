@@ -1,6 +1,6 @@
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/providers/UserProvider.dart';
-import 'package:SportRabbit/screens/games_list/games_listview.dart';
+import 'package:SportRabbit/screens/games_list/games_list.dart';
 import 'package:SportRabbit/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +28,7 @@ class GamesRabbitApp extends StatelessWidget {
               useMaterial3: true),
           darkTheme: ThemeData.dark(),
           routes: {
-            "/": (context) => const GamesListView(),
+            "/": (context) => GamesListView(),
             "/logn": (context) => const LoginScreen(),
             //  "/": (context) => const HomePage(),
             // "/search_page": (context) => const SearchPage(),

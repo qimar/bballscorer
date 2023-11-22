@@ -43,7 +43,11 @@ class LessonModel {
         title: json["title"],
         videoUrl: json["video_url"],
         description: json["description"],
-        drill: DrillModel.fromJson(json["drill"]),
-        programType: ProgramType.fromJson(json["program_type"]),
+        drill: json["drill"] == null
+            ? null
+            : DrillModel.fromJson(json["drill"] as Map<String, dynamic>),
+        programType: json["program_type"] == null
+            ? null
+            : ProgramType.fromJson(json["program_type"]),
       );
 }

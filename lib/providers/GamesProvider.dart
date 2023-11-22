@@ -19,6 +19,8 @@ class GamesProvider extends ChangeNotifier {
   }
 
   DataState _dataState = DataState.Uninitialized;
+  // getter
+  DataState get dataState => _dataState;
 
   List<GameModel> _games = [];
   List<GameModel> get games => _games;
@@ -35,6 +37,9 @@ class GamesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int _totalPages = 5;
+  bool get _didLastLoad => _currentPageNumber >= _totalPages;
+
   // fetch games from api
   Future<void> fetchGames({String search = "", bool isRefresh = false}) async {
     Map<String, dynamic> _whereParams = {
@@ -43,9 +48,38 @@ class GamesProvider extends ChangeNotifier {
       }
     };
     GamePaginatedResponse _gamePaginatedResponse =
-        await _gameGQLService.getAllGamesByParams(variables: _whereParams);
-    gamesCount = _gamePaginatedResponse.totalCount;
-    _games.addAll(_gamePaginatedResponse.games);
+        GamePaginatedResponse(games: [], totalCount: 0);
+    if (!isRefresh) {
+      _dataState = (_dataState == DataState.Uninitialized)
+          ? DataState.Initial_Fetching
+          : DataState.More_Fetching;
+    } else {
+      _currentPageNumber = 0;
+      _dataState = DataState.Refreshing;
+    }
+
     notifyListeners();
+
+    try {
+      if (_didLastLoad) {
+        _dataState = DataState.No_More_Data;
+      } else {
+        _gamePaginatedResponse =
+            await _gameGQLService.getAllGamesByParams(variables: _whereParams);
+        if (_dataState == DataState.Refreshing) {
+          _games.clear();
+        }
+        _games.addAll(_gamePaginatedResponse.games);
+        gamesCount = (_gamePaginatedResponse.totalCount / _pageOffset).ceil();
+
+        _dataState = DataState.Fetched;
+        _currentPageNumber++;
+      }
+
+      notifyListeners();
+    } catch (e) {
+      _dataState = DataState.Error;
+      notifyListeners();
+    }
   }
 }

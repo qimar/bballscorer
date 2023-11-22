@@ -25,7 +25,7 @@ class GameModel {
   bool? isPublished;
   String? difficulty;
   String? duration;
-  double? price;
+  String? price;
   int? programTypeId;
   // list of drills
   List<DrillModel>? drills;
@@ -47,18 +47,26 @@ class GameModel {
       // reference of program type
       this.programType});
 
+// getter concatenate duration and difficulty
+  String get difficultyAndDuration {
+    return "$difficulty - $duration";
+  }
+
   // factory is a method which is used to return object from json to dart model
   factory GameModel.fromJson(Map<String, dynamic> json) => GameModel(
         id: json["id"] as int?,
         title: json["title"] as String?,
+        thumbnail: json["thumbnail"] as String?,
         isPublished: json["ispublished"] as bool?,
         difficulty: json["difficulty"] as String?,
         duration: json["duration"] as String?,
-        price: json["price"] as double?,
+        price: json["price"] as String?,
         programTypeId: json["program_type_id"] as int?,
         // list of drills
-        drills: List<DrillModel>.from(
-            json["drills"].map((x) => DrillModel.fromJson(x))),
+        drills: json["drills"] == null
+            ? null
+            : List<DrillModel>.from(
+                json["drills"].map((x) => DrillModel.fromJson(x))),
         // reference of program type
         programType: json["program_type"] == null
             ? null

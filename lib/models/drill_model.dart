@@ -42,9 +42,11 @@ class DrillModel {
       title: json["title"] as String?,
       duration: json["duration"] as int?,
       game: json["game"] == null ? null : GameModel.fromJson(json["game"]),
-      lessons: (json["lessons"] as List<dynamic>)
-          .map((e) => LessonModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      lessons: json["lessons"] == null
+          ? null
+          : (json["lessons"] as List<dynamic>)
+              .map((e) => LessonModel.fromJson(e as Map<String, dynamic>))
+              .toList(),
       programType: json["program_type"] == null
           ? null
           : ProgramType.fromJson(json["program_type"]));

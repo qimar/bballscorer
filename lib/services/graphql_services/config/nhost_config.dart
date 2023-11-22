@@ -3,7 +3,9 @@ const NHOST_SUBDOMAIN = 'lsfvwunypqneqnvrjrsu';
 const NHOST_REGION = 'ap-southeast-1';
 
 const NHOST_GRAPHQL_URL =
-    'https://lsfvwunypqneqnvrjrsu.graphql.ap-southeast-1.nhost.run/v1/graphql';
+    'https://lsfvwunypqneqnvrjrsu.hasura.ap-southeast-1.nhost.run/v1/graphql';
+// const NHOST_GRAPHQL_URL =
+//     'https://lsfvwunypqneqnvrjrsu.hasura.ap-southeast-1.nhost.run/v1/graphql';
 
 const NHOST_STORAGE_URL =
     'https://yfnaaqdhstomxncwctej.storage.ap-south-1.nhost.run/v1';
