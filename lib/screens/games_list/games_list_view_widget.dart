@@ -23,10 +23,10 @@ class GamesListViewWidget extends StatelessWidget {
     return Padding(
         padding:
             EdgeInsets.fromLTRB(leftAndRightPadding, 0, leftAndRightPadding, 0),
-        child: _scrollNotificationListener());
+        child: _scrollNotificationListener(context));
   }
 
-  Widget _scrollNotificationListener() {
+  Widget _scrollNotificationListener(BuildContext context) {
     return Column(children: [
       Expanded(
           child: NotificationListener<ScrollNotification>(
@@ -48,11 +48,16 @@ class GamesListViewWidget extends StatelessWidget {
                                 print("search tap on games search");
                               });
                         } else {
-                          return GameListItemWidet(game: _data[index]);
+                          return GameListItemWidet(
+                              game: _data[index], index: index);
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)
-        const Center(child: CircularProgressIndicator())
+        const Center(child: CircularProgressIndicator()),
+      if (_dataState == DataState.No_More_Data)
+        Center(
+            child: Text("No more data",
+                style: Theme.of(context).textTheme.bodySmall))
     ]);
   }
 

@@ -41,8 +41,9 @@ class GamesProvider extends ChangeNotifier {
           ? DataState.Initial_Fetching
           : DataState.More_Fetching;
     } else {
-      _dataState = DataState.Refreshing;
+      _games.clear();
       _currentPageNumber = 0;
+      _dataState = DataState.Refreshing;
     }
     notifyListeners();
     try {
@@ -52,19 +53,20 @@ class GamesProvider extends ChangeNotifier {
         print("fetching games ${_whereParams.toString()}}");
         _gamePaginatedResponse =
             await _gameGQLService.getAllGamesByParams(variables: _whereParams);
-        if (_dataState == DataState.Refreshing) {
-          _games.clear();
-        }
-        _games.addAll(_gamePaginatedResponse.games);
+        // if (_dataState == DataState.Refreshing) {
+        //   _games.clear();
+        // }
+        _games += _gamePaginatedResponse.games;
         gamesCount = _gamePaginatedResponse.totalCount;
         _totalPages = (_gamePaginatedResponse.totalCount / _pageSize).ceil();
 
         _dataState = DataState.Fetched;
-        _currentPageNumber++;
+        _currentPageNumber += 1;
       }
 
       notifyListeners();
     } catch (e) {
+      print("error in fetching games ${e.toString()}");
       _dataState = DataState.Error;
       notifyListeners();
     }

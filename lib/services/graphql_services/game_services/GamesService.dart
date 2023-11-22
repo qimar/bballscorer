@@ -21,7 +21,9 @@ class GameGQLService {
     if (result.hasException) {
       throw Exception(result.exception.toString());
     }
-    return GamePaginatedResponse.fromJson(result.data!);
+    GamePaginatedResponse _gamePaginatedResponse =
+        GamePaginatedResponse.fromJson(result.data!);
+    return _gamePaginatedResponse;
   }
 }
 

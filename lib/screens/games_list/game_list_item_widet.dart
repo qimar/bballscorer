@@ -6,7 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class GameListItemWidet extends StatelessWidget {
   final GameModel game;
-  GameListItemWidet({super.key, required this.game});
+  final int index;
+  const GameListItemWidet({super.key, required this.game, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class GameListItemWidet extends StatelessWidget {
               children: [
                 Expanded(
                     child: CachedNetworkImageWidget(imageUrl: game.thumbnail!)),
-                GameTitleWidget(game: game),
+                GameTitleWidget(game: game, index: index),
               ],
             )));
   }

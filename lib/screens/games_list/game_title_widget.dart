@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 
 class GameTitleWidget extends StatelessWidget {
   final GameModel game;
-  const GameTitleWidget({Key? key, required this.game}) : super(key: key);
+  final int index;
+  const GameTitleWidget({Key? key, required this.game, required this.index})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     double leftAndRightPadding = 12;
-    double width = MediaQuery.of(context).size.width;
 
     return Padding(
         padding: EdgeInsets.only(
@@ -19,7 +20,7 @@ class GameTitleWidget extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(game.difficultyAndDuration),
-            Text(game.title!,
+            Text("${game.title!} - ${index + 1}",
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
