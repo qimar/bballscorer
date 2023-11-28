@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class GamesListViewWidget extends StatelessWidget {
+class DrillsListViewWidget extends StatelessWidget {
   final List<GameModel> _data;
   bool _isLoading;
-  GamesListViewWidget(this._data, this._isLoading, {super.key});
+  DrillsListViewWidget(this._data, this._isLoading, {super.key});
 
   late DataState _dataState;
   late BuildContext _buildContext;
