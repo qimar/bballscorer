@@ -1,5 +1,6 @@
+import 'package:SportRabbit/common/colors.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
-import 'package:SportRabbit/screens/games_list/games_list_view_widget.dart';
+import 'package:SportRabbit/screens/games_list/widgets/games_list_view_widget.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,7 @@ class GamesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.pink[50],
+            backgroundColor: appMainColor,
             elevation: 0.0,
             title:
                 Text('Games', style: Theme.of(context).textTheme.headlineSmall),

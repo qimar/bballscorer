@@ -1,6 +1,6 @@
 import 'package:SportRabbit/common/widgets/app_title.dart';
 
-import 'package:SportRabbit/screens/signup.dart';
+import 'package:SportRabbit/screens/auth/signup.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {

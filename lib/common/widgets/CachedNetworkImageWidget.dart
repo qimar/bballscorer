@@ -10,12 +10,13 @@ class CachedNetworkImageWidget extends StatelessWidget {
     return CachedNetworkImage(
         imageUrl: imageUrl,
         imageBuilder: (context, imageProvider) => Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                    colorFilter: const ColorFilter.mode(
-                        Colors.red, BlendMode.colorBurn)))),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+              // colorFilter:
+              //     const ColorFilter.mode(Colors.pink, BlendMode.colorBurn),
+            ))),
         placeholder: (context, url) {
           return const Center(
               child: SizedBox(

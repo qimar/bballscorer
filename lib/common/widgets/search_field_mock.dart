@@ -1,3 +1,4 @@
+import 'package:SportRabbit/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchFieldModel extends StatelessWidget {
@@ -13,7 +14,7 @@ class SearchFieldModel extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 10, bottom: 10),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(25)),
+            color: appMainColor, borderRadius: BorderRadius.circular(25)),
         child: TextField(
             readOnly: true,
             onTap: () {
@@ -21,9 +22,9 @@ class SearchFieldModel extends StatelessWidget {
             },
             decoration: InputDecoration(
                 hintText: searchHintText,
-                hintStyle: const TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: appSecondaryColor),
                 prefixIcon:
-                    const Icon(Icons.search, size: 35, color: Colors.grey),
+                    Icon(Icons.search, size: 35, color: appSecondaryColor),
                 border: InputBorder.none)));
   }
 }

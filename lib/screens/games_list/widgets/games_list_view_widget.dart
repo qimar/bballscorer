@@ -1,7 +1,7 @@
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
-import 'package:SportRabbit/screens/games_list/game_list_item_widet.dart';
+import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +45,7 @@ class GamesListViewWidget extends StatelessWidget {
                           return SearchFieldModel(
                               searchHintText: "Search for games...",
                               onSearchTap: () {
-                                print("search tap on games search");
+                                print("GAMES SEARCH FIELD IS CLICKED");
                               });
                         } else {
                           return GameListItemWidet(

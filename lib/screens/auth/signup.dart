@@ -1,17 +1,17 @@
 import 'package:SportRabbit/common/widgets/app_title.dart';
-import 'package:SportRabbit/screens/forgotpassword.dart';
-import 'package:SportRabbit/screens/games_list/games_list.dart';
-import 'package:SportRabbit/screens/signup.dart';
+
+import 'package:SportRabbit/screens/auth/login.dart';
+
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -20,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        // title: Text('SignUp App',
+        // style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: Padding(
           padding: const EdgeInsets.all(10),
@@ -28,18 +30,40 @@ class _LoginScreenState extends State<LoginScreen> {
               const AppTitle(),
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: const Text(
-                    'Login',
+                    'Sign Up',
                     style: TextStyle(fontSize: 20),
                   )),
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Username',
+                    labelText: 'Email Address',
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: TextField(
+                  obscureText: true,
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'First Name',
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: TextField(
+                  obscureText: true,
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Last Name',
                   ),
                 ),
               ),
@@ -54,23 +78,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  //forgot password screen
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ForgotPassword()));
-                },
-                child: const Text(
-                  'Forgot Password',
-                ),
-              ),
+              const SizedBox(height: 15),
               Container(
                   height: 50,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: ElevatedButton(
-                    child: const Text('Login'),
+                    child: const Text('Sign Up'),
                     onPressed: () {
                       // ignore: avoid_print
                       print(nameController.text);
@@ -80,25 +93,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GamesListView()));
+                              builder: (context) => const LoginScreen()));
                     },
                   )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('Does not have account?'),
+                  const Text('Already have an account?'),
                   TextButton(
                     child: const Text(
-                      'Sign Up',
+                      'Sign In',
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
                       //signup screen
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpScreen()));
+                      Navigator.pop(context);
                     },
                   )
                 ],

@@ -1,7 +1,7 @@
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/providers/UserProvider.dart';
 import 'package:SportRabbit/screens/games_list/games_list.dart';
-import 'package:SportRabbit/screens/login.dart';
+import 'package:SportRabbit/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
