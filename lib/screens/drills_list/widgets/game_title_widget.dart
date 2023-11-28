@@ -40,9 +40,6 @@ class GameTitleWidget extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary)),
               onPressed: () {
                 print('Join Program Pressed');
-                // navigate to drills list
-                // Navigator.pushNamed(context, '/drills_list',
-                //     arguments: {'game': game, 'index': index});
               })
         ]));
   }

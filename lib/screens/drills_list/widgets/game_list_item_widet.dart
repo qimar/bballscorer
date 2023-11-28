@@ -2,7 +2,6 @@ import 'package:SportRabbit/common/colors.dart';
 import 'package:SportRabbit/common/widgets/CachedNetworkImageWidget.dart';
 import 'package:SportRabbit/common/widgets/program_type_labe_widget.dart';
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/screens/drills_list/drills_list.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_title_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -29,20 +28,9 @@ class GameListItemWidet extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(borderRadius),
                 child: Column(children: [
-                  // game thumbnail image
                   Expanded(
-                      child: GestureDetector(
-                          onTapUp: (details) {
-                            // Navigate to drill list screen
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DrillsListView(game: game)));
-                          },
-                          child: CachedNetworkImageWidget(
-                              imageUrl: game.thumbnail!))),
-                  // game title and duration and join program button
+                      child:
+                          CachedNetworkImageWidget(imageUrl: game.thumbnail!)),
                   GameTitleWidget(game: game, index: index),
                 ]))),
         // game program type

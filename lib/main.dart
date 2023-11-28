@@ -1,5 +1,6 @@
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/providers/UserProvider.dart';
+import 'package:SportRabbit/screens/drills_list/drills_list.dart';
 import 'package:SportRabbit/screens/games_list/games_list.dart';
 import 'package:SportRabbit/screens/auth/login.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class GamesRabbitApp extends StatelessWidget {
           routes: {
             "/": (context) => GamesListView(),
             "/logn": (context) => const LoginScreen(),
+            // drill list
+            // "/drills_list": (context) => DrillsListView(),
             //  "/": (context) => const HomePage(),
             // "/search_page": (context) => const SearchPage(),
             // "/player_page": (context) => const PlayerPage(),
