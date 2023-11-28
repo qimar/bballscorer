@@ -12,25 +12,31 @@ class GameTitleWidget extends StatelessWidget {
 
     return Padding(
         padding: EdgeInsets.only(
-            right: leftAndRightPadding,
-            left: leftAndRightPadding,
-            top: 8,
-            bottom: 8),
+            right: leftAndRightPadding, left: 20, top: 8, bottom: 8),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          // 0 index has column
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(game.difficultyAndDuration),
-            Text("${game.title!} - $index",
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black))
+            // game duration and difficulty
+            Text(
+              game.difficultyAndDuration,
+              style: const TextStyle(fontSize: 16, color: Colors.black),
+            ),
+            // game title
+            Padding(
+              padding: const EdgeInsets.only(top: 5, bottom: 8),
+              child: Text(game.title!,
+                  style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
+            )
           ]),
           // text button written join program
           TextButton(
               child: Text('Join Program',
                   style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Theme.of(context).colorScheme.primary)),
               onPressed: () {
                 print('Join Program Pressed');

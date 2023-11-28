@@ -42,6 +42,16 @@ class GamesListViewWidget extends StatelessWidget {
                       itemBuilder: (context, index) {
                         // show seach field on 0 index
                         if (index == 0) {
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 10, 4, 6),
+                            child: Center(
+                              child: Text(
+                                  "Choose one, you can change it anytime",
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
+                            ),
+                          );
+                        } else if (index == 1) {
                           return SearchFieldModel(
                               searchHintText: "Search for games...",
                               onSearchTap: () {

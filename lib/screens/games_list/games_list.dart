@@ -13,11 +13,13 @@ class GamesListView extends StatelessWidget {
         appBar: AppBar(
             backgroundColor: appMainColor,
             elevation: 0.0,
+            centerTitle: true,
             title:
                 Text('Games', style: Theme.of(context).textTheme.headlineSmall),
             actions: <Widget>[
               IconButton(
-                  icon: const Icon(Icons.notifications),
+                  icon: const Icon(Icons.notifications_active_outlined,
+                      color: Colors.black87, size: 30),
                   onPressed: () {
                     // do something
                   }),

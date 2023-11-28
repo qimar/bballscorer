@@ -13,8 +13,9 @@ class SearchFieldModel extends StatelessWidget {
 // rounded corners search text field
     return Container(
         margin: const EdgeInsets.only(top: 10, bottom: 10),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         decoration: BoxDecoration(
-            color: appMainColor, borderRadius: BorderRadius.circular(25)),
+            color: appMainColor, borderRadius: BorderRadius.circular(50)),
         child: TextField(
             readOnly: true,
             onTap: () {
