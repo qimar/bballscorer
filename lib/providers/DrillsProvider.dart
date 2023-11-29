@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class DrillsProvider extends ChangeNotifier {
   DrillsGQLService _drillGQLService = DrillsGQLService();
-  final int _pageSize = 4;
+  final int _pageSize = 20;
   int _currentPageNumber = 0;
   // set search keyword
   String _searchKeyword = "";
@@ -63,12 +63,12 @@ class DrillsProvider extends ChangeNotifier {
       if (_didLastLoad) {
         _dataState = DataState.No_More_Data;
       } else {
-        print("fetching games ${_whereParams.toString()}}");
+        print("fetching drills by game ${_whereParams.toString()}}");
         _drillPaginatedResponse =
             await _drillGQLService.getAllDrillsByParams(_whereParams);
-        // if (_dataState == DataState.Refreshing) {
-        //   _drills.clear();
-        // }
+        if (_dataState == DataState.Refreshing) {
+          _drills.clear();
+        }
         _drills += _drillPaginatedResponse.drills.cast<DrillModel>();
         drillsCount = _drillPaginatedResponse.totalCount;
         _totalPages = (_drillPaginatedResponse.totalCount / _pageSize).ceil();

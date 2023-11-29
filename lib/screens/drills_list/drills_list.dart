@@ -24,7 +24,7 @@ class DrillsListView extends StatelessWidget {
                     style: const TextStyle(fontSize: 16, color: Colors.black),
                     children: <TextSpan>[
                       TextSpan(
-                          text: '\n${game.title}',
+                          text: '\n${game.title} - ${game.id}',
                           style: const TextStyle(fontSize: 28))
                     ]))),
         body: Consumer<DrillsProvider>(builder:

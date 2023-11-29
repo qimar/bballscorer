@@ -44,6 +44,7 @@ class DrillModel {
       id: json["id"] as int?,
       title: json["title"] as String?,
       duration: json["duration"] as int?,
+      thumbnail: json["thumbnail"] as String?,
       // referece of game
       game: json["game"] == null ? null : GameModel.fromJson(json["game"]),
       // reference of lessons

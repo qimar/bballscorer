@@ -56,11 +56,7 @@ class GamesListViewWidget extends StatelessWidget {
                         print("GAMES SEARCH FIELD IS CLICKED");
                       });
                 } else {
-                  return
-                      // Container(
-                      //   child: Text("Dril list item widget will come here"),
-                      // );
-                      GameListItemWidet(game: _data[index - 2]);
+                  return GameListItemWidet(game: _data[index - 2]);
                 }
               },
             ),

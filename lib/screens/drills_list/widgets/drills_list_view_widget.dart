@@ -1,3 +1,4 @@
+import 'package:SportRabbit/common/widgets/CachedNetworkImageWidget.dart';
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
 import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
@@ -42,18 +43,23 @@ class DrillsListViewWidget extends StatelessWidget {
                     await _onRefresh();
                   },
                   child: ListView.builder(
-                      itemCount: _data.length,
+                      itemCount: _data.length + 1,
                       itemBuilder: (context, index) {
                         // show seach field on 0 index
                         if (index == 0) {
-                          return const Padding(
-                            padding: EdgeInsets.fromLTRB(4, 10, 4, 6),
-                            child: DrillLessonListItemWidget(),
-                          );
+                          return const DrillLessonListItemWidget();
                         } else {
-                          // return GameListItemWidet(
-                          // game: _data[index], index: index);
-                          const Text("data");
+                          DrillModel _drill = _data[index - 1];
+                          print(_drill.title);
+                          return Text(_drill.title!);
+
+                          // ListTile(
+                          //     // leading: CachedNetworkImageWidget(
+                          //     //     imageUrl: _drill.thumbnail!),
+                          //     title: Text(_drill.title!),
+                          //     subtitle: Text(_drill.duration!.toString()),
+                          //     trailing: const Icon(Icons.arrow_forward_ios),
+                          //     );
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)

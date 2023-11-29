@@ -9,12 +9,23 @@ class DrillLessonListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<DrillModel> _drills = Provider.of<DrillsProvider>(context).drills;
-    return SizedBox(
-        height: 30,
+    return Container(
+        // color: Colors.grey,
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 5),
+        height: 65,
         width: MediaQuery.of(context).size.width,
-        child: Column(children: [
-          const Text("Exrcise Liet"),
-          Text("1/${_drills.length} Completed")
-        ]));
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  child: Text("Exrcise List",
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black))),
+              Text("1/${_drills.length} Completed")
+            ]));
   }
 }
