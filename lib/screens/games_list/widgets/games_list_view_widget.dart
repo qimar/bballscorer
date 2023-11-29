@@ -30,43 +30,43 @@ class GamesListViewWidget extends StatelessWidget {
   Widget _scrollNotificationListener(BuildContext context) {
     return Column(children: [
       Expanded(
-          child: NotificationListener<ScrollNotification>(
-              onNotification: (scrollInfo) {
-                return _scrollNotification(scrollInfo);
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (scrollInfo) {
+            return _scrollNotification(scrollInfo);
+          },
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await _onRefresh();
+            },
+            child: ListView.builder(
+              itemCount: _data.length + 2,
+              itemBuilder: (context, index) {
+                // show seach field on 0 index
+                if (index == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(4, 10, 4, 6),
+                    child: Center(
+                        child: Text("Choose one, you can change it anytime",
+                            style: Theme.of(context).textTheme.bodyMedium)),
+                  );
+                } else if (index == 1) {
+                  return SearchFieldModel(
+                      searchHintText: "Search for games...",
+                      onSearchTap: () {
+                        print("GAMES SEARCH FIELD IS CLICKED");
+                      });
+                } else {
+                  return
+                      // Container(
+                      //   child: Text("Dril list item widget will come here"),
+                      // );
+                      GameListItemWidet(game: _data[index - 2]);
+                }
               },
-              child: RefreshIndicator(
-                  onRefresh: () async {
-                    await _onRefresh();
-                  },
-                  child: ListView.builder(
-                      itemCount: _data.length,
-                      itemBuilder: (context, index) {
-                        // show seach field on 0 index
-                        if (index == 0) {
-                          return Padding(
-                            padding: const EdgeInsets.fromLTRB(4, 10, 4, 6),
-                            child: Center(
-                              child: Text(
-                                  "Choose one, you can change it anytime",
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
-                            ),
-                          );
-                        } else if (index == 1) {
-                          return SearchFieldModel(
-                              searchHintText: "Search for games...",
-                              onSearchTap: () {
-                                print("GAMES SEARCH FIELD IS CLICKED");
-                              });
-                        } else {
-                          return
-                              // Container(
-                              //   child: Text("Dril list item widget will come here"),
-                              // );
-                              GameListItemWidet(
-                                  game: _data[index], index: index);
-                        }
-                      })))),
+            ),
+          ),
+        ),
+      ),
       if (_dataState == DataState.More_Fetching)
         Center(
             child: SizedBox(

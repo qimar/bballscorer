@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class GameProvider extends ChangeNotifier {
   GameGQLService _gameGQLService = GameGQLService();
-  final int _pageSize = 4;
+  final int _pageSize = 20;
   int _currentPageNumber = 0;
   // set search keyword
   String _searchKeyword = "";
@@ -25,6 +25,7 @@ class GameProvider extends ChangeNotifier {
 
   int _totalPages = 1;
   bool get _didLastLoad => _currentPageNumber >= _totalPages;
+
   // fetch games from api
   Future<void> fetchGames({String search = "", bool isRefresh = false}) async {
     Map<String, dynamic> _whereParams = {
@@ -34,8 +35,10 @@ class GameProvider extends ChangeNotifier {
       "limit": _pageSize,
       "offset": _currentPageNumber
     };
+
     GamePaginatedResponse _gamePaginatedResponse =
         GamePaginatedResponse(games: [], totalCount: 0);
+
     if (!isRefresh) {
       _dataState = (_dataState == DataState.Uninitialized)
           ? DataState.Initial_Fetching
@@ -45,7 +48,9 @@ class GameProvider extends ChangeNotifier {
       _currentPageNumber = 0;
       _dataState = DataState.Refreshing;
     }
+
     notifyListeners();
+
     try {
       if (_didLastLoad) {
         _dataState = DataState.No_More_Data;
@@ -53,15 +58,19 @@ class GameProvider extends ChangeNotifier {
         print("fetching games ${_whereParams.toString()}}");
         _gamePaginatedResponse =
             await _gameGQLService.getAllGamesByParams(variables: _whereParams);
-        // if (_dataState == DataState.Refreshing) {
-        //   _games.clear();
-        // }
+        if (_dataState == DataState.Refreshing) {
+          _games.clear();
+        }
         _games += _gamePaginatedResponse.games;
+
         gamesCount = _gamePaginatedResponse.totalCount;
+
         _totalPages = (_gamePaginatedResponse.totalCount / _pageSize).ceil();
 
         _dataState = DataState.Fetched;
+
         _currentPageNumber += 1;
+        print("games count ${_games.length}, totalPages $_totalPages");
       }
 
       notifyListeners();

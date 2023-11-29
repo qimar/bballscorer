@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 
 class GameTitleWidget extends StatelessWidget {
   final GameModel game;
-  final int index;
-  const GameTitleWidget({Key? key, required this.game, required this.index})
-      : super(key: key);
+  const GameTitleWidget({Key? key, required this.game}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double leftAndRightPadding = 12;
 
     return Padding(
         padding: EdgeInsets.only(
-            right: leftAndRightPadding, left: 20, top: 8, bottom: 8),
+            right: leftAndRightPadding, left: 16, top: 8, bottom: 8),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           // 0 index has column
@@ -20,14 +18,14 @@ class GameTitleWidget extends StatelessWidget {
             // game duration and difficulty
             Text(
               game.difficultyAndDuration,
-              style: const TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 14, color: Colors.black),
             ),
             // game title
             Padding(
               padding: const EdgeInsets.only(top: 5, bottom: 8),
-              child: Text(game.title!,
+              child: Text("${game.title!} - ${game.id}",
                   style: const TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.black)),
             )
@@ -36,7 +34,7 @@ class GameTitleWidget extends StatelessWidget {
           TextButton(
               child: Text('Join Program',
                   style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Theme.of(context).colorScheme.primary)),
               onPressed: () {
                 print('Join Program Pressed');

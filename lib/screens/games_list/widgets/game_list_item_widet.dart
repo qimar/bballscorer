@@ -10,8 +10,7 @@ import 'package:provider/provider.dart';
 
 class GameListItemWidet extends StatelessWidget {
   final GameModel game;
-  final int index;
-  const GameListItemWidet({super.key, required this.game, required this.index});
+  const GameListItemWidet({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class GameListItemWidet extends StatelessWidget {
                           child: CachedNetworkImageWidget(
                               imageUrl: game.thumbnail!))),
                   // game title and duration and join program button
-                  GameTitleWidget(game: game, index: index),
+                  GameTitleWidget(game: game),
                 ]))),
         // game program type
         ProgramTypeLabelWidget(programType: game.programType!),

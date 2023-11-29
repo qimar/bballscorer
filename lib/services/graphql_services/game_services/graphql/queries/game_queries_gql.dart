@@ -1,11 +1,13 @@
-String getAllGamesByParamsQuery =
-    '''query getAllGames(\$whereGameFilter: game_bool_exp!, \$limit: Int!, \$offset: Int!) {
+String getAllGamesByParamsQuery = '''
+
+
+query getAllGames(\$whereGameFilter: game_bool_exp!, \$limit: Int!, \$offset: Int!) {
   game_aggregate(where: \$whereGameFilter){
     aggregate{
       count
     }
   }
-  game(where: \$whereGameFilter limit: \$limit offset: \$offset) {
+  game(where: \$whereGameFilter order_by: {id: asc} limit: \$limit offset: \$offset) {
     id
     title
     thumbnail
@@ -22,4 +24,6 @@ String getAllGamesByParamsQuery =
     }
   }
 }
+
+
 ''';

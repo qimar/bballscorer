@@ -53,6 +53,7 @@ class DrillsListViewWidget extends StatelessWidget {
                         } else {
                           // return GameListItemWidet(
                           // game: _data[index], index: index);
+                          const Text("data");
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)
