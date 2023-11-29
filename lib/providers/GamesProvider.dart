@@ -1,10 +1,9 @@
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/models/game_paginated_response_mode.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:SportRabbit/services/graphql_services/game_services/GamesService.dart';
 import 'package:flutter/material.dart';
 
-class GamesProvider extends ChangeNotifier {
+class GameProvider extends ChangeNotifier {
   GameGQLService _gameGQLService = GameGQLService();
   final int _pageSize = 4;
   int _currentPageNumber = 0;

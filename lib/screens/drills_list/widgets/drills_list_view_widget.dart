@@ -1,6 +1,6 @@
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/providers/GamesProvider.dart';
+import 'package:SportRabbit/providers/DrillsProvider.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class DrillsListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _buildContext = context;
-    _dataState = Provider.of<GamesProvider>(_buildContext).dataState;
+    _dataState = Provider.of<DrillsProvider>(_buildContext).dataState;
     return Padding(
         padding:
             EdgeInsets.fromLTRB(leftAndRightPadding, 0, leftAndRightPadding, 0),
@@ -85,7 +85,7 @@ class DrillsListViewWidget extends StatelessWidget {
     if (!_isLoading &&
         scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
       _isLoading = true;
-      Provider.of<GamesProvider>(_buildContext, listen: false).fetchGames();
+      Provider.of<DrillsProvider>(_buildContext, listen: false).fetchGames();
     }
     return true;
   }
@@ -95,7 +95,7 @@ class DrillsListViewWidget extends StatelessWidget {
     if (!_isLoading) {
       _isLoading = true;
 
-      Provider.of<GamesProvider>(_buildContext, listen: false)
+      Provider.of<DrillsProvider>(_buildContext, listen: false)
           .fetchGames(search: "", isRefresh: true);
     }
   }

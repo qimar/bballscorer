@@ -18,7 +18,7 @@ class GamesRabbitApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UserProvider()),
-        ChangeNotifierProvider(create: (context) => GamesProvider()),
+        ChangeNotifierProvider(create: (context) => DrillsProvider()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

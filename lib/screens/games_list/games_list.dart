@@ -24,8 +24,8 @@ class GamesListView extends StatelessWidget {
                     // do something
                   }),
             ]),
-        body: Consumer<GamesProvider>(builder:
-            (BuildContext context, GamesProvider gamesProvider, Widget? _) {
+        body: Consumer<GameProvider>(builder:
+            (BuildContext context, GameProvider gamesProvider, Widget? _) {
           switch (gamesProvider.dataState) {
             case DataState.Uninitialized:
               Future(() {

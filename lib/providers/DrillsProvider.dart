@@ -1,12 +1,12 @@
 import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/models/game_paginated_response_mode.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
+import 'package:SportRabbit/services/graphql_services/drills_services/DrillsService.dart';
 import 'package:SportRabbit/services/graphql_services/game_services/GamesService.dart';
 import 'package:flutter/material.dart';
 
 class DrillsProvider extends ChangeNotifier {
-  GameGQLService _gameGQLService = GameGQLService();
+  DrillsGQLService _drillGQLService = DrillsGQLService();
   final int _pageSize = 4;
   int _currentPageNumber = 0;
   // set search keyword
@@ -16,11 +16,11 @@ class DrillsProvider extends ChangeNotifier {
   // getter
   DataState get dataState => _dataState;
   List<DrillModel> _drills = [];
-  List<DrillModel> get games => _drills;
+  List<DrillModel> get drills => _drills;
   int _drillsCount = 0;
-  int get gamesCount => _drillsCount;
+  int get drillsCount => _drillsCount;
   // setter
-  set gamesCount(int gamesCount) {
+  set drillsCount(int gamesCount) {
     _drillsCount = gamesCount;
     notifyListeners();
   }
@@ -29,16 +29,17 @@ class DrillsProvider extends ChangeNotifier {
   bool get _didLastLoad => _currentPageNumber >= _totalPages;
   // fetch games from api
   Future<void> fetchDrillsByGame(
-      {String search = "", bool isRefresh = false}) async {
+      {required GameModel selectedGame,
+      String search = "",
+      bool isRefresh = false}) async {
     Map<String, dynamic> _whereParams = {
-      "whereGameFilter": {
+      "whereDrillFilter": {
+        "game_id": {"_eq": selectedGame.id},
         "ispublished": {"_eq": true}
       },
-      "limit": _pageSize,
-      "offset": _currentPageNumber
     };
-    GamePaginatedResponse _gamePaginatedResponse =
-        GamePaginatedResponse(games: [], totalCount: 0);
+    DrillsPaginatedResponse _drillPaginatedResponse =
+        DrillsPaginatedResponse(drills: [], totalCount: 0);
     if (!isRefresh) {
       _dataState = (_dataState == DataState.Uninitialized)
           ? DataState.Initial_Fetching
@@ -54,14 +55,14 @@ class DrillsProvider extends ChangeNotifier {
         _dataState = DataState.No_More_Data;
       } else {
         print("fetching games ${_whereParams.toString()}}");
-        _gamePaginatedResponse =
-            await _gameGQLService.getAllGamesByParams(variables: _whereParams);
+        _drillPaginatedResponse =
+            await _drillGQLService.getAllDrillsByParams(_whereParams);
         // if (_dataState == DataState.Refreshing) {
         //   _drills.clear();
         // }
-        _drills += _gamePaginatedResponse.games.cast<DrillModel>();
-        gamesCount = _gamePaginatedResponse.totalCount;
-        _totalPages = (_gamePaginatedResponse.totalCount / _pageSize).ceil();
+        _drills += _drillPaginatedResponse.drills.cast<DrillModel>();
+        drillsCount = _drillPaginatedResponse.totalCount;
+        _totalPages = (_drillPaginatedResponse.totalCount / _pageSize).ceil();
 
         _dataState = DataState.Fetched;
         _currentPageNumber += 1;

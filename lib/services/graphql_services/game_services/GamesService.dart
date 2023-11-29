@@ -1,5 +1,4 @@
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/models/game_paginated_response_mode.dart';
 import 'package:SportRabbit/services/graphql_services/config/grapgql_client.dart';
 import 'package:SportRabbit/services/graphql_services/game_services/graphql/queries/game_queries_gql.dart';
 import 'package:graphql/client.dart';

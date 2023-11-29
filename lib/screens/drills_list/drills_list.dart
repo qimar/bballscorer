@@ -1,5 +1,5 @@
 import 'package:SportRabbit/models/game_model.dart';
-import 'package:SportRabbit/providers/GamesProvider.dart';
+import 'package:SportRabbit/providers/DrillsProvider.dart';
 import 'package:SportRabbit/screens/games_list/widgets/games_list_view_widget.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
@@ -14,41 +14,37 @@ class DrillsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          centerTitle: true,
-          title: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                  text: game.difficultyAndDuration,
-                  style: const TextStyle(fontSize: 16, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: '\n${game.title}',
-                        style: const TextStyle(fontSize: 28))
-                  ])),
-
-          // Text(game.title!,
-          //     style: Theme.of(context).textTheme.headlineSmall),
-        ),
-        body: Consumer<GamesProvider>(builder:
-            (BuildContext context, GamesProvider gamesProvider, Widget? _) {
-          switch (gamesProvider.dataState) {
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            centerTitle: true,
+            title: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                    text: game.difficultyAndDuration,
+                    style: const TextStyle(fontSize: 16, color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '\n${game.title}',
+                          style: const TextStyle(fontSize: 28))
+                    ]))),
+        body: Consumer<DrillsProvider>(builder:
+            (BuildContext context, DrillsProvider drillProvider, Widget? _) {
+          switch (drillProvider.dataState) {
             case DataState.Uninitialized:
               Future(() {
-                gamesProvider.fetchGames();
+                drillProvider.fetchDrillsByGame(selectedGame: game);
               });
-              return DrillsListViewWidget(gamesProvider.games, false);
+              return DrillsListViewWidget(drillProvider.drills, false);
             case DataState.Initial_Fetching:
               return const Center(
                   child: SizedBox(child: CircularProgressIndicator()));
             case DataState.More_Fetching:
             case DataState.Refreshing:
-              return DrillsListViewWidget(gamesProvider.games, true);
+              return DrillsListViewWidget(drillProvider.drills, true);
             case DataState.Fetched:
             case DataState.Error:
             case DataState.No_More_Data:
-              return DrillsListViewWidget(gamesProvider.games, false);
+              return DrillsListViewWidget(drillProvider.drills, false);
           }
         }));
   }

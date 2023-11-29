@@ -1,7 +1,7 @@
-import 'package:SportRabbit/models/lesson_aggregate_model.dart';
 import 'package:SportRabbit/models/lesson_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/models/program_type.dart';
+import 'package:SportRabbit/services/graphql_services/drills_services/DrillsService.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 // make json to dart of drill

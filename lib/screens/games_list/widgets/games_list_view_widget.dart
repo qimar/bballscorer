@@ -1,4 +1,5 @@
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
+import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
@@ -19,7 +20,7 @@ class DrillsListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _buildContext = context;
-    _dataState = Provider.of<GamesProvider>(_buildContext).dataState;
+    _dataState = Provider.of<GameProvider>(_buildContext).dataState;
     return Padding(
         padding:
             EdgeInsets.fromLTRB(leftAndRightPadding, 0, leftAndRightPadding, 0),
@@ -58,8 +59,12 @@ class DrillsListViewWidget extends StatelessWidget {
                                 print("GAMES SEARCH FIELD IS CLICKED");
                               });
                         } else {
-                          return GameListItemWidet(
-                              game: _data[index], index: index);
+                          return
+                              // Container(
+                              //   child: Text("Dril list item widget will come here"),
+                              // );
+                              GameListItemWidet(
+                                  game: _data[index], index: index);
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)
@@ -85,7 +90,7 @@ class DrillsListViewWidget extends StatelessWidget {
     if (!_isLoading &&
         scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
       _isLoading = true;
-      Provider.of<GamesProvider>(_buildContext, listen: false).fetchGames();
+      Provider.of<GameProvider>(_buildContext, listen: false).fetchGames();
     }
     return true;
   }
@@ -95,7 +100,7 @@ class DrillsListViewWidget extends StatelessWidget {
     if (!_isLoading) {
       _isLoading = true;
 
-      Provider.of<GamesProvider>(_buildContext, listen: false)
+      Provider.of<GameProvider>(_buildContext, listen: false)
           .fetchGames(search: "", isRefresh: true);
     }
   }
