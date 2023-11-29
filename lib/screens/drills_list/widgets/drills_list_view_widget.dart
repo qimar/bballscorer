@@ -1,10 +1,6 @@
-import 'package:SportRabbit/common/widgets/CachedNetworkImageWidget.dart';
-import 'package:SportRabbit/common/widgets/search_field_mock.dart';
 import 'package:SportRabbit/models/drill_model.dart';
-import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/DrillsProvider.dart';
 import 'package:SportRabbit/screens/drills_list/widgets/drill_lesson_list_item_widget.dart';
-import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

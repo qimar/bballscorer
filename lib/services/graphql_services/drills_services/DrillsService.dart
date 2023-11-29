@@ -1,8 +1,6 @@
 import 'package:SportRabbit/models/drill_model.dart';
-import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/services/graphql_services/config/grapgql_client.dart';
 import 'package:SportRabbit/services/graphql_services/drills_services/graphql/queries/drill_queries_gql.dart';
-import 'package:SportRabbit/services/graphql_services/game_services/graphql/queries/game_queries_gql.dart';
 import 'package:graphql/client.dart';
 
 class DrillsGQLService {

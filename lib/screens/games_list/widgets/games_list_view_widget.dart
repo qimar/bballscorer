@@ -1,5 +1,4 @@
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
-import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
