@@ -31,17 +31,17 @@ class GamesListView extends StatelessWidget {
               Future(() {
                 gamesProvider.fetchGames();
               });
-              return DrillsListViewWidget(gamesProvider.games, false);
+              return GamesListViewWidget(gamesProvider.games, false);
             case DataState.Initial_Fetching:
               return const Center(
                   child: SizedBox(child: CircularProgressIndicator()));
             case DataState.More_Fetching:
             case DataState.Refreshing:
-              return DrillsListViewWidget(gamesProvider.games, true);
+              return GamesListViewWidget(gamesProvider.games, true);
             case DataState.Fetched:
             case DataState.Error:
             case DataState.No_More_Data:
-              return DrillsListViewWidget(gamesProvider.games, false);
+              return GamesListViewWidget(gamesProvider.games, false);
           }
         }));
   }

@@ -2,7 +2,6 @@ import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:SportRabbit/services/graphql_services/drills_services/DrillsService.dart';
-import 'package:SportRabbit/services/graphql_services/game_services/GamesService.dart';
 import 'package:flutter/material.dart';
 
 class DrillsProvider extends ChangeNotifier {
@@ -16,7 +15,9 @@ class DrillsProvider extends ChangeNotifier {
   // getter
   DataState get dataState => _dataState;
   List<DrillModel> _drills = [];
+
   List<DrillModel> get drills => _drills;
+
   int _drillsCount = 0;
   int get drillsCount => _drillsCount;
   // setter
@@ -25,16 +26,24 @@ class DrillsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // selected game
+  GameModel? _selectedGame;
+  // getter
+  GameModel? get selectedGame => _selectedGame;
+  // setter
+  set selectedGame(GameModel? game) {
+    _selectedGame = game;
+    notifyListeners();
+  }
+
   int _totalPages = 1;
   bool get _didLastLoad => _currentPageNumber >= _totalPages;
   // fetch games from api
   Future<void> fetchDrillsByGame(
-      {required GameModel selectedGame,
-      String search = "",
-      bool isRefresh = false}) async {
+      {String search = "", bool isRefresh = false}) async {
     Map<String, dynamic> _whereParams = {
       "whereDrillFilter": {
-        "game_id": {"_eq": selectedGame.id},
+        "game_id": {"_eq": selectedGame!.id},
         "ispublished": {"_eq": true}
       },
     };

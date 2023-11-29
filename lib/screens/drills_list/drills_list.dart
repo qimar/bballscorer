@@ -1,17 +1,17 @@
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/DrillsProvider.dart';
-import 'package:SportRabbit/screens/games_list/widgets/games_list_view_widget.dart';
+import 'package:SportRabbit/screens/drills_list/widgets/drills_list_view_widget.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ignore: use_key_in_widget_constructors
 class DrillsListView extends StatelessWidget {
-  final GameModel game;
-
-  const DrillsListView({super.key, required this.game});
+  const DrillsListView({super.key});
   @override
   Widget build(BuildContext context) {
+    final GameModel game =
+        Provider.of<DrillsProvider>(context, listen: false).selectedGame!;
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.transparent,
@@ -32,7 +32,7 @@ class DrillsListView extends StatelessWidget {
           switch (drillProvider.dataState) {
             case DataState.Uninitialized:
               Future(() {
-                drillProvider.fetchDrillsByGame(selectedGame: game);
+                drillProvider.fetchDrillsByGame();
               });
               return DrillsListViewWidget(drillProvider.drills, false);
             case DataState.Initial_Fetching:

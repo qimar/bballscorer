@@ -1,6 +1,8 @@
 import 'package:SportRabbit/common/widgets/search_field_mock.dart';
+import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/DrillsProvider.dart';
+import 'package:SportRabbit/screens/drills_list/widgets/drill_lesson_list_item_widget.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_list_item_widet.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,7 @@ import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class DrillsListViewWidget extends StatelessWidget {
-  final List<GameModel> _data;
+  final List<DrillModel> _data;
   bool _isLoading;
   DrillsListViewWidget(this._data, this._isLoading, {super.key});
 
@@ -31,7 +33,9 @@ class DrillsListViewWidget extends StatelessWidget {
       Expanded(
           child: NotificationListener<ScrollNotification>(
               onNotification: (scrollInfo) {
-                return _scrollNotification(scrollInfo);
+                return _scrollNotification(
+                  scrollInfo,
+                );
               },
               child: RefreshIndicator(
                   onRefresh: () async {
@@ -42,24 +46,13 @@ class DrillsListViewWidget extends StatelessWidget {
                       itemBuilder: (context, index) {
                         // show seach field on 0 index
                         if (index == 0) {
-                          return Padding(
-                            padding: const EdgeInsets.fromLTRB(4, 10, 4, 6),
-                            child: Center(
-                              child: Text(
-                                  "Choose one, you can change it anytime",
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium),
-                            ),
+                          return const Padding(
+                            padding: EdgeInsets.fromLTRB(4, 10, 4, 6),
+                            child: DrillLessonListItemWidget(),
                           );
-                        } else if (index == 1) {
-                          return SearchFieldModel(
-                              searchHintText: "Search for games...",
-                              onSearchTap: () {
-                                print("GAMES SEARCH FIELD IS CLICKED");
-                              });
                         } else {
-                          return GameListItemWidet(
-                              game: _data[index], index: index);
+                          // return GameListItemWidet(
+                          // game: _data[index], index: index);
                         }
                       })))),
       if (_dataState == DataState.More_Fetching)
@@ -85,7 +78,8 @@ class DrillsListViewWidget extends StatelessWidget {
     if (!_isLoading &&
         scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
       _isLoading = true;
-      Provider.of<DrillsProvider>(_buildContext, listen: false).fetchGames();
+      Provider.of<DrillsProvider>(_buildContext, listen: false)
+          .fetchDrillsByGame();
     }
     return true;
   }
@@ -96,7 +90,7 @@ class DrillsListViewWidget extends StatelessWidget {
       _isLoading = true;
 
       Provider.of<DrillsProvider>(_buildContext, listen: false)
-          .fetchGames(search: "", isRefresh: true);
+          .fetchDrillsByGame(search: "", isRefresh: true);
     }
   }
 }

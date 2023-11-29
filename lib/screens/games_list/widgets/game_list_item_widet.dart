@@ -2,9 +2,11 @@ import 'package:SportRabbit/common/colors.dart';
 import 'package:SportRabbit/common/widgets/CachedNetworkImageWidget.dart';
 import 'package:SportRabbit/common/widgets/program_type_labe_widget.dart';
 import 'package:SportRabbit/models/game_model.dart';
+import 'package:SportRabbit/providers/DrillsProvider.dart';
 import 'package:SportRabbit/screens/drills_list/drills_list.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_title_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GameListItemWidet extends StatelessWidget {
   final GameModel game;
@@ -33,12 +35,15 @@ class GameListItemWidet extends StatelessWidget {
                   Expanded(
                       child: GestureDetector(
                           onTapUp: (details) {
+                            // set selected game
+                            Provider.of<DrillsProvider>(context, listen: false)
+                                .selectedGame = game;
                             // Navigate to drill list screen
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        DrillsListView(game: game)));
+                                        const DrillsListView()));
                           },
                           child: CachedNetworkImageWidget(
                               imageUrl: game.thumbnail!))),
