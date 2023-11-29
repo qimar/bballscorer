@@ -1,4 +1,3 @@
-import 'package:SportRabbit/common/colors.dart';
 import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/providers/GamesProvider.dart';
 import 'package:SportRabbit/screens/games_list/widgets/games_list_view_widget.dart';

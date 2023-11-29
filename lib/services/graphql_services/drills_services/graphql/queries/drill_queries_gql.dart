@@ -1,5 +1,5 @@
-String getAllDrillsByParamsQuery =
-    '''query getAllDrillsByGame(\$whereDrillFilter: drill_bool_exp!) {
+String getAllDrillsByParamsQuery = '''
+query getAllDrillsByGame(\$whereDrillFilter: drill_bool_exp!) {
   drill_aggregate(where: \$whereDrillFilter) {
     aggregate {
       count
@@ -18,6 +18,17 @@ String getAllDrillsByParamsQuery =
       value
       id
       price
+    }
+    lessons_aggregate(where: {ispublished: {_eq: true}}){
+      aggregate{
+        count
+        sum {
+          duration
+        }
+        avg {
+          duration
+        }        
+      }
     }
   }
 }

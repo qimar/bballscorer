@@ -5,10 +5,11 @@ import 'package:SportRabbit/models/game_model.dart';
 import 'package:SportRabbit/screens/games_list/widgets/game_title_widget.dart';
 import 'package:flutter/material.dart';
 
-class GameListItemWidet extends StatelessWidget {
+class DrillListItemWidet extends StatelessWidget {
   final GameModel game;
   final int index;
-  const GameListItemWidet({super.key, required this.game, required this.index});
+  const DrillListItemWidet(
+      {super.key, required this.game, required this.index});
 
   @override
   Widget build(BuildContext context) {

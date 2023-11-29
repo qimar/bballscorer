@@ -1,4 +1,5 @@
 import 'package:SportRabbit/models/game_model.dart';
+import 'package:SportRabbit/models/game_paginated_response_mode.dart';
 import 'package:SportRabbit/services/graphql_services/config/grapgql_client.dart';
 import 'package:SportRabbit/services/graphql_services/game_services/graphql/queries/game_queries_gql.dart';
 import 'package:graphql/client.dart';
@@ -24,25 +25,5 @@ class GameGQLService {
     GamePaginatedResponse _gamePaginatedResponse =
         GamePaginatedResponse.fromJson(result.data!);
     return _gamePaginatedResponse;
-  }
-}
-
-class GamePaginatedResponse {
-  final List<GameModel> games;
-  final int totalCount;
-
-  GamePaginatedResponse({
-    required this.games,
-    required this.totalCount,
-  });
-
-  // from json
-  factory GamePaginatedResponse.fromJson(Map<String, dynamic> json) {
-    return GamePaginatedResponse(
-      games: (json['game'] as List<dynamic>)
-          .map((e) => GameModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      totalCount: json['game_aggregate']['aggregate']['count'] as int,
-    );
   }
 }

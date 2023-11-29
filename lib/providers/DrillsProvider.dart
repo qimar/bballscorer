@@ -1,5 +1,6 @@
 import 'package:SportRabbit/models/drill_model.dart';
 import 'package:SportRabbit/models/game_model.dart';
+import 'package:SportRabbit/models/game_paginated_response_mode.dart';
 import 'package:SportRabbit/services/enums/data_loading_state_enum.dart';
 import 'package:SportRabbit/services/graphql_services/game_services/GamesService.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class DrillsProvider extends ChangeNotifier {
         // if (_dataState == DataState.Refreshing) {
         //   _drills.clear();
         // }
-        _drills += _gamePaginatedResponse.games;
+        _drills += _gamePaginatedResponse.games.cast<DrillModel>();
         gamesCount = _gamePaginatedResponse.totalCount;
         _totalPages = (_gamePaginatedResponse.totalCount / _pageSize).ceil();
 
